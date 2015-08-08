@@ -1,0 +1,6 @@
+<div .#{menuMainDivI}>
+    <nav .#{navI}>
+        <ul>
+            <li>
+                <a href="@{HomeR}">
+                    Главная

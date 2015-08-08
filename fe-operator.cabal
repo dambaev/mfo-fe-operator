@@ -18,6 +18,8 @@ library
                      Settings
                      Settings.StaticFiles
                      Settings.Development
+                     Widgets.DefaultHeader
+                     Widgets.MainMenu
                      Handler.Home
                      Handler.Auth
 

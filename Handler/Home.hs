@@ -12,9 +12,13 @@ import Yesod.Form.Bootstrap3
 -- The majority of the code you will write in Yesod lives in these handler
 -- functions. You can spread them across multiple files if you are so
 -- inclined, or create a single monolithic file.
+
+import Widgets.DefaultHeader
+import Widgets.MainMenu
+
 getHomeR :: Handler Html
 getHomeR = do
     authid <- requireAuthId
-    defaultLayout $ [whamlet|
-hello
-|]
+    defaultLayout $ do
+        defaultHeaderW
+        mainMenuW
