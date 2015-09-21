@@ -15,6 +15,7 @@ import Yesod.Form.Bootstrap3
 
 import Widgets.DefaultHeader
 import Widgets.MainMenu
+import Widgets.News
 
 getHomeR :: Handler Html
 getHomeR = do
@@ -22,3 +23,4 @@ getHomeR = do
     defaultLayout $ do
         defaultHeaderW
         mainMenuW
+        newsW

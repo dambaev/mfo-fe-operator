@@ -1,0 +1,32 @@
+<button id=#{addButtonI}>
+    Добавить новость
+<div id=#{mainDivI} style="display:none">
+    <div id=#{headerDivI}>
+        <h2 id=#{titleI} contenteditable="true">
+            Заголовок новости
+        <h3 id=#{shortContentI} contenteditable="true">
+            Караткое содержание новости
+    <div>
+        <div id=#{contentI} contenteditable="true">
+            Полное содержание новости
+    <button id=#{submitI}>
+        Опубликовать
+    <form id=#{addNewsFormI} style="display:none" action=@{AddNewsR} method=POST >
+        ^{addNewsFormW}
+
+<div id=#{newsListHeaderDivI}>
+    $if Import.null shortPosts
+        Новостей нет
+    $else
+        <form id=#{deleteNewsFormI} action=@{DeleteNewsR} method=POST>
+            ^{deleteNewsFormW}
+            <input type="submit"> Тест
+        <table>
+            $forall NewsShort id postdate topic tags short <- shortPosts
+                <tr>
+                    <td> 
+                        <h10 id=#{newsItemPostdateI}>#{show postdate}
+                        <h2 id=#{titleI}>#{topic}
+                        <h3 id=#{shortContentI}> #{short}
+                        <h10 id=#{tagsI}> #{tags}
+                        <a href=@{GetNewsR id}> Читать полностью

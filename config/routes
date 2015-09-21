@@ -3,6 +3,10 @@
 /favicon.ico FaviconR GET
 /robots.txt RobotsR GET
 
-/ HomeR GET 
+/ HomeR GET
 
 /auth AuthR Auth getAuth
+
+/addnews AddNewsR POST
+/deletenews DeleteNewsR POST
+/getnews/#Text GetNewsR GET

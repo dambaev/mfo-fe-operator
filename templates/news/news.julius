@@ -1,0 +1,64 @@
+(function() {
+    var addButton = document.getElementById( '#{rawJS addButtonI}'),
+        editingEnabled = false,
+        mainDiv = document.getElementById( '#{rawJS mainDivI}'),
+        shortContent = document.getElementById( '#{rawJS shortContentI}'),
+        content = document.getElementById( '#{rawJS contentI}'),
+        submit = document.getElementById( '#{rawJS submitI}'),
+        title = document.getElementById( '#{rawJS titleI}');
+
+    function toggleEditor() {
+        if (editingEnabled) {
+            disableEditing();
+            editingEnabled = false;
+        } else
+        {
+            enableEditing();
+            editingEnabled = true;
+        }
+    }
+
+    function enableEditing() {
+        title.setAttribute( 'contenteditable', true);
+        shortContent.setAttribute( 'contenteditable', true);
+        content.setAttribute( 'contenteditable', true);
+        if(!CKEDITOR.instances.#{rawJS titleI})
+        {
+            CKEDITOR.inline( '#{rawJS titleI}', {
+                    extraAllowedContent: 'a(documentation);abbr[title];code',
+                    removePlugins: 'stylescombo',
+                    extraPlugins: 'sourcedialog',
+                    startupFocus: true
+                }
+            );
+        }
+        mainDiv.style.display = 'inline';
+    }
+
+    function disableEditing() {
+        if(CKEDITOR.instances.#{rawJS titleI})
+            CKEDITOR.instances.#{rawJS titleI}.destroy();
+        title.setAttribute( 'contenteditable', false);
+        shortContent.setAttribute( 'contenteditable', false);
+        content.setAttribute( 'contenteditable', false);
+        mainDiv.style.display = 'none';
+    }
+    function onClick( element, callback ) {
+        if ( window.addEventListener ) {
+            element.addEventListener( 'click', callback, false );
+        }
+        else if ( window.attachEvent ) {
+            element.attachEvent( 'onclick', callback );
+        }
+    }
+
+    function postNews(){
+        jspost('#{rawJS addNewsFormI}', { "f1": title.innerHTML
+                              , "f2": shortContent.innerHTML
+                              , "f3": content.innerHTML
+                              });
+    }
+
+    onClick(addButton, toggleEditor);
+    onClick(submit, postNews);
+}) ();

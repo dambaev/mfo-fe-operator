@@ -20,8 +20,10 @@ library
                      Settings.Development
                      Widgets.DefaultHeader
                      Widgets.MainMenu
+                     Widgets.News
                      Handler.Home
                      Handler.Auth
+                     Handler.News
 
     if flag(dev) || flag(library-only)
         cpp-options:   -DDEVELOPMENT

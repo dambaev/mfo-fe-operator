@@ -1,0 +1,26 @@
+function jspost(formId, params) {
+//    method = method || "post"; // Set method to post by default if not specified.
+
+    // The rest of this code assumes you are not using a library.
+    // It can be made less wordy if you use one.
+    var form = document.getElementById(formId);
+    //form.setAttribute("method", method);
+    //form.setAttribute("action", path);
+    var field = form.getElementsByTagName("*")
+
+    for(var key in params) {
+        if(params.hasOwnProperty(key)) {
+            for(var a=0; a < field.length; ++a)
+            {
+                if( field[a].name == key)
+                {
+                    field[a].setAttribute("value", params[key]);
+//                    alert(key);
+                }
+            }
+         }
+    }
+
+//    document.body.appendChild(form);
+    form.submit();
+}
